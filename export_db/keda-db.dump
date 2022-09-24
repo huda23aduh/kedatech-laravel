@@ -1,0 +1,1053 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.5 (Homebrew)
+-- Dumped by pg_dump version 14.0
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: failed_jobs; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.failed_jobs (
+    id bigint NOT NULL,
+    uuid character varying(255) NOT NULL,
+    connection text NOT NULL,
+    queue text NOT NULL,
+    payload text NOT NULL,
+    exception text NOT NULL,
+    failed_at timestamp(0) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE public.failed_jobs OWNER TO huda;
+
+--
+-- Name: failed_jobs_id_seq; Type: SEQUENCE; Schema: public; Owner: huda
+--
+
+CREATE SEQUENCE public.failed_jobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.failed_jobs_id_seq OWNER TO huda;
+
+--
+-- Name: failed_jobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: huda
+--
+
+ALTER SEQUENCE public.failed_jobs_id_seq OWNED BY public.failed_jobs.id;
+
+
+--
+-- Name: feedbacks; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.feedbacks (
+    id bigint NOT NULL,
+    title character varying(255) NOT NULL,
+    details character varying(255) NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    deleted_at timestamp(0) without time zone,
+    created_by bigint NOT NULL
+);
+
+
+ALTER TABLE public.feedbacks OWNER TO huda;
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE; Schema: public; Owner: huda
+--
+
+CREATE SEQUENCE public.feedbacks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.feedbacks_id_seq OWNER TO huda;
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: huda
+--
+
+ALTER SEQUENCE public.feedbacks_id_seq OWNED BY public.feedbacks.id;
+
+
+--
+-- Name: messages; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.messages (
+    id bigint NOT NULL,
+    content character varying(255) NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    deleted_at timestamp(0) without time zone,
+    msg_room_id bigint NOT NULL,
+    sender_id bigint NOT NULL
+);
+
+
+ALTER TABLE public.messages OWNER TO huda;
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: huda
+--
+
+CREATE SEQUENCE public.messages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.messages_id_seq OWNER TO huda;
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: huda
+--
+
+ALTER SEQUENCE public.messages_id_seq OWNED BY public.messages.id;
+
+
+--
+-- Name: migrations; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.migrations (
+    id integer NOT NULL,
+    migration character varying(255) NOT NULL,
+    batch integer NOT NULL
+);
+
+
+ALTER TABLE public.migrations OWNER TO huda;
+
+--
+-- Name: migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: huda
+--
+
+CREATE SEQUENCE public.migrations_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.migrations_id_seq OWNER TO huda;
+
+--
+-- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: huda
+--
+
+ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
+
+
+--
+-- Name: oauth_access_tokens; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.oauth_access_tokens (
+    id character varying(100) NOT NULL,
+    user_id bigint,
+    client_id bigint NOT NULL,
+    name character varying(255),
+    scopes text,
+    revoked boolean NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    expires_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.oauth_access_tokens OWNER TO huda;
+
+--
+-- Name: oauth_auth_codes; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.oauth_auth_codes (
+    id character varying(100) NOT NULL,
+    user_id bigint NOT NULL,
+    client_id bigint NOT NULL,
+    scopes text,
+    revoked boolean NOT NULL,
+    expires_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.oauth_auth_codes OWNER TO huda;
+
+--
+-- Name: oauth_clients; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.oauth_clients (
+    id bigint NOT NULL,
+    user_id bigint,
+    name character varying(255) NOT NULL,
+    secret character varying(100),
+    provider character varying(255),
+    redirect text NOT NULL,
+    personal_access_client boolean NOT NULL,
+    password_client boolean NOT NULL,
+    revoked boolean NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.oauth_clients OWNER TO huda;
+
+--
+-- Name: oauth_clients_id_seq; Type: SEQUENCE; Schema: public; Owner: huda
+--
+
+CREATE SEQUENCE public.oauth_clients_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.oauth_clients_id_seq OWNER TO huda;
+
+--
+-- Name: oauth_clients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: huda
+--
+
+ALTER SEQUENCE public.oauth_clients_id_seq OWNED BY public.oauth_clients.id;
+
+
+--
+-- Name: oauth_personal_access_clients; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.oauth_personal_access_clients (
+    id bigint NOT NULL,
+    client_id bigint NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.oauth_personal_access_clients OWNER TO huda;
+
+--
+-- Name: oauth_personal_access_clients_id_seq; Type: SEQUENCE; Schema: public; Owner: huda
+--
+
+CREATE SEQUENCE public.oauth_personal_access_clients_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.oauth_personal_access_clients_id_seq OWNER TO huda;
+
+--
+-- Name: oauth_personal_access_clients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: huda
+--
+
+ALTER SEQUENCE public.oauth_personal_access_clients_id_seq OWNED BY public.oauth_personal_access_clients.id;
+
+
+--
+-- Name: oauth_refresh_tokens; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.oauth_refresh_tokens (
+    id character varying(100) NOT NULL,
+    access_token_id character varying(100) NOT NULL,
+    revoked boolean NOT NULL,
+    expires_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.oauth_refresh_tokens OWNER TO huda;
+
+--
+-- Name: password_resets; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.password_resets (
+    email character varying(255) NOT NULL,
+    token character varying(255) NOT NULL,
+    created_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.password_resets OWNER TO huda;
+
+--
+-- Name: report_feedbacks; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.report_feedbacks (
+    id bigint NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    deleted_at timestamp(0) without time zone,
+    feedback_id bigint NOT NULL,
+    reported_by bigint NOT NULL
+);
+
+
+ALTER TABLE public.report_feedbacks OWNER TO huda;
+
+--
+-- Name: report_feedbacks_id_seq; Type: SEQUENCE; Schema: public; Owner: huda
+--
+
+CREATE SEQUENCE public.report_feedbacks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.report_feedbacks_id_seq OWNER TO huda;
+
+--
+-- Name: report_feedbacks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: huda
+--
+
+ALTER SEQUENCE public.report_feedbacks_id_seq OWNED BY public.report_feedbacks.id;
+
+
+--
+-- Name: room; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.room (
+    id bigint NOT NULL,
+    title character varying(255) NOT NULL,
+    description character varying(255) NOT NULL,
+    room_type character varying(255) NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.room OWNER TO huda;
+
+--
+-- Name: room_id_seq; Type: SEQUENCE; Schema: public; Owner: huda
+--
+
+CREATE SEQUENCE public.room_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.room_id_seq OWNER TO huda;
+
+--
+-- Name: room_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: huda
+--
+
+ALTER SEQUENCE public.room_id_seq OWNED BY public.room.id;
+
+
+--
+-- Name: room_members; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.room_members (
+    id bigint NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    room_id bigint NOT NULL,
+    user_id bigint NOT NULL
+);
+
+
+ALTER TABLE public.room_members OWNER TO huda;
+
+--
+-- Name: room_members_id_seq; Type: SEQUENCE; Schema: public; Owner: huda
+--
+
+CREATE SEQUENCE public.room_members_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.room_members_id_seq OWNER TO huda;
+
+--
+-- Name: room_members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: huda
+--
+
+ALTER SEQUENCE public.room_members_id_seq OWNED BY public.room_members.id;
+
+
+--
+-- Name: user_types; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.user_types (
+    id bigint NOT NULL,
+    name character varying(255) NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.user_types OWNER TO huda;
+
+--
+-- Name: user_types_id_seq; Type: SEQUENCE; Schema: public; Owner: huda
+--
+
+CREATE SEQUENCE public.user_types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_types_id_seq OWNER TO huda;
+
+--
+-- Name: user_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: huda
+--
+
+ALTER SEQUENCE public.user_types_id_seq OWNED BY public.user_types.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: huda
+--
+
+CREATE TABLE public.users (
+    id bigint NOT NULL,
+    user_type_id bigint NOT NULL,
+    email character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    deleted_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.users OWNER TO huda;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: huda
+--
+
+CREATE SEQUENCE public.users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO huda;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: huda
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: failed_jobs id; Type: DEFAULT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.failed_jobs ALTER COLUMN id SET DEFAULT nextval('public.failed_jobs_id_seq'::regclass);
+
+
+--
+-- Name: feedbacks id; Type: DEFAULT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.feedbacks ALTER COLUMN id SET DEFAULT nextval('public.feedbacks_id_seq'::regclass);
+
+
+--
+-- Name: messages id; Type: DEFAULT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.messages ALTER COLUMN id SET DEFAULT nextval('public.messages_id_seq'::regclass);
+
+
+--
+-- Name: migrations id; Type: DEFAULT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.migrations_id_seq'::regclass);
+
+
+--
+-- Name: oauth_clients id; Type: DEFAULT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.oauth_clients ALTER COLUMN id SET DEFAULT nextval('public.oauth_clients_id_seq'::regclass);
+
+
+--
+-- Name: oauth_personal_access_clients id; Type: DEFAULT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.oauth_personal_access_clients ALTER COLUMN id SET DEFAULT nextval('public.oauth_personal_access_clients_id_seq'::regclass);
+
+
+--
+-- Name: report_feedbacks id; Type: DEFAULT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.report_feedbacks ALTER COLUMN id SET DEFAULT nextval('public.report_feedbacks_id_seq'::regclass);
+
+
+--
+-- Name: room id; Type: DEFAULT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.room ALTER COLUMN id SET DEFAULT nextval('public.room_id_seq'::regclass);
+
+
+--
+-- Name: room_members id; Type: DEFAULT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.room_members ALTER COLUMN id SET DEFAULT nextval('public.room_members_id_seq'::regclass);
+
+
+--
+-- Name: user_types id; Type: DEFAULT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.user_types ALTER COLUMN id SET DEFAULT nextval('public.user_types_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: failed_jobs; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.failed_jobs (id, uuid, connection, queue, payload, exception, failed_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: feedbacks; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.feedbacks (id, title, details, created_at, updated_at, deleted_at, created_by) FROM stdin;
+1	feedback 1	detail feedback 1	2022-09-24 10:41:30	2022-09-24 10:41:30	\N	5
+3	feedback 2	detail feedback 2	2022-09-24 10:43:51	2022-09-24 10:43:51	\N	5
+4	feedback 3	detail feedback 3	2022-09-24 16:00:41	2022-09-24 16:00:41	\N	5
+\.
+
+
+--
+-- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.messages (id, content, created_at, updated_at, deleted_at, msg_room_id, sender_id) FROM stdin;
+3	hello staff 1 chat 1	2022-09-24 16:38:01	2022-09-24 16:38:01	\N	6	5
+4	hello staff 1 chat 2	2022-09-24 16:51:29	2022-09-24 16:51:29	\N	6	5
+5	hello customer 2 chat 1	2022-09-24 17:00:39	2022-09-24 17:00:39	\N	7	5
+6	hello customer 3 chat 1	2022-09-24 17:10:34	2022-09-24 17:10:34	\N	8	5
+8	hello customer 3 chat 3	2022-09-24 17:18:06	2022-09-24 17:18:06	\N	8	5
+7	hello customer 3 chat 2	2022-09-24 17:17:53	2022-09-24 17:17:53	\N	8	5
+\.
+
+
+--
+-- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.migrations (id, migration, batch) FROM stdin;
+1	2014_10_12_000000_create_users_table	1
+2	2014_10_12_100000_create_password_resets_table	1
+3	2019_08_19_000000_create_failed_jobs_table	1
+4	2021_03_31_091553_create_user_types_table	1
+5	2021_03_31_091641_add_foreign_keys_to_users_table	1
+6	2016_06_01_000001_create_oauth_auth_codes_table	2
+7	2016_06_01_000002_create_oauth_access_tokens_table	2
+8	2016_06_01_000003_create_oauth_refresh_tokens_table	2
+9	2016_06_01_000004_create_oauth_clients_table	2
+10	2016_06_01_000005_create_oauth_personal_access_clients_table	2
+18	2022_09_24_095729_create_room_table	3
+19	2022_09_24_095818_create_room_members_table	3
+20	2022_09_24_095848_create_messages_table	3
+21	2022_09_24_095925_create_feedbacks_table	3
+22	2022_09_24_100418_create_report_feedbacks_table	3
+\.
+
+
+--
+-- Data for Name: oauth_access_tokens; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.oauth_access_tokens (id, user_id, client_id, name, scopes, revoked, created_at, updated_at, expires_at) FROM stdin;
+3ac6edfc5a70c5fcb34777c2eca0291e49ec7671e3ce3714ceb86fe99a068b3bc170661e0201a589	7	1	MyApp	["staff-scope"]	f	2022-09-24 08:27:01	2022-09-24 08:27:01	2023-09-24 08:27:01
+e6c99ef685da2bfe2ac2200e897c9417606e518c3ba467b7d16d68d93b5759b73e4e8d47ee7b66e4	7	1	MyApp	["staff-scope"]	f	2022-09-24 08:37:37	2022-09-24 08:37:37	2023-09-24 08:37:37
+8ba5782dd131589cf335e42e24ac0924b3e73e0be11c52dd978acb309a4e98cd7301d86fad478a43	5	1	MyApp	["customer-scope"]	f	2022-09-24 08:37:53	2022-09-24 08:37:53	2023-09-24 08:37:53
+98b685b94f0055bb5fb94cb7bc284b2edb48cc8259f767f9c09ae50f12621ff783d17d8633ff2aac	6	1	MyApp	["customer-scope"]	f	2022-09-24 16:52:56	2022-09-24 16:52:56	2023-09-24 16:52:56
+74c6b2e6a1b84d90802fedc8c46abbe85e159256759fd310a1005a158627402f7199afc6e46e1c4a	6	1	MyApp	["customer-scope"]	f	2022-09-24 16:57:33	2022-09-24 16:57:33	2023-09-24 16:57:33
+81f4764fdacf4ae04ad874c179f620dd00cbd980c4606fcbc8d09599a919b6bff6ea6413d2da13d8	8	1	MyApp	["customer-scope"]	f	2022-09-24 17:10:07	2022-09-24 17:10:07	2023-09-24 17:10:07
+42a2defc335879114d99cd0b322845c896414f96677692e32cda0da651c6c4505f4d2471152968e8	10	1	MyApp	["customer-scope"]	f	2022-09-24 17:40:22	2022-09-24 17:40:22	2023-09-24 17:40:22
+\.
+
+
+--
+-- Data for Name: oauth_auth_codes; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.oauth_auth_codes (id, user_id, client_id, scopes, revoked, expires_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: oauth_clients; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.oauth_clients (id, user_id, name, secret, provider, redirect, personal_access_client, password_client, revoked, created_at, updated_at) FROM stdin;
+1	\N	Laravel Personal Access Client	RBqnYc45OyLcEg7BePM7WuSuwDHTsMNYrhmzvYPj	\N	http://localhost	t	f	f	2022-09-24 05:09:29	2022-09-24 05:09:29
+2	\N	Laravel Password Grant Client	6ndH5zT0iNDDHdIOfuhbmDRUPsLsT8Mz0JOsXTJx	users	http://localhost	f	t	f	2022-09-24 05:09:29	2022-09-24 05:09:29
+\.
+
+
+--
+-- Data for Name: oauth_personal_access_clients; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.oauth_personal_access_clients (id, client_id, created_at, updated_at) FROM stdin;
+1	1	2022-09-24 05:09:29	2022-09-24 05:09:29
+\.
+
+
+--
+-- Data for Name: oauth_refresh_tokens; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.oauth_refresh_tokens (id, access_token_id, revoked, expires_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: password_resets; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.password_resets (email, token, created_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: report_feedbacks; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.report_feedbacks (id, created_at, updated_at, deleted_at, feedback_id, reported_by) FROM stdin;
+7	2022-09-24 11:06:31	2022-09-24 11:06:31	\N	1	5
+8	2022-09-24 16:00:58	2022-09-24 16:00:58	\N	4	5
+\.
+
+
+--
+-- Data for Name: room; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.room (id, title, description, room_type, created_at, updated_at) FROM stdin;
+6	5_7	description of room 5_7	single	2022-09-24 16:38:01	2022-09-24 16:38:01
+7	5_6	description of room 5_6	single	2022-09-24 17:00:39	2022-09-24 17:00:39
+8	5_8	description of room 5_8	single	2022-09-24 17:10:34	2022-09-24 17:10:34
+\.
+
+
+--
+-- Data for Name: room_members; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.room_members (id, created_at, updated_at, room_id, user_id) FROM stdin;
+11	2022-09-24 16:38:01	2022-09-24 16:38:01	6	5
+12	2022-09-24 16:38:01	2022-09-24 16:38:01	6	7
+13	2022-09-24 17:00:39	2022-09-24 17:00:39	7	5
+14	2022-09-24 17:00:39	2022-09-24 17:00:39	7	6
+15	2022-09-24 17:10:34	2022-09-24 17:10:34	8	5
+16	2022-09-24 17:10:34	2022-09-24 17:10:34	8	8
+\.
+
+
+--
+-- Data for Name: user_types; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.user_types (id, name, created_at, updated_at) FROM stdin;
+1	Customer	2021-04-01 00:00:00	\N
+2	Staff	2021-04-01 00:00:00	\N
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: huda
+--
+
+COPY public.users (id, user_type_id, email, password, created_at, updated_at, deleted_at) FROM stdin;
+1	1	customer@gmail.com	$2y$10$xZTM3p/ptZ6FFABKf1o1guizocCvtCzVrYH/l5oc5fbS8RPUCMyGa	2021-04-01 00:00:00	\N	\N
+2	2	staff@gmail.com	$2y$10$wTi982weUOKQpPH.mKYeae4S/tSXJn1deDGrWNDnfnOqZtgt2p5Xy	2021-04-01 00:00:00	\N	\N
+5	1	customer1@mail.com	$2y$10$eSWS8a54SMFG3asZn8S2Z.zceSJbxwjU9R6dxNcRo1BBd8gVVH6RO	2022-09-24 06:57:25	2022-09-24 06:57:25	\N
+7	2	staff1@mail.com	$2y$10$uQuP7pTOLSxWYfAzmmOMO.eqw43dBMbplHxeEio9dAac8La9OTInW	2022-09-24 07:07:33	2022-09-24 07:07:33	\N
+10	1	customer5@mail.com	$2y$10$8E9QokR5W16ATpUA/8147O/ZeU97paCbmimhaQxJvZQtzmBrkj56i	2022-09-24 07:56:37	2022-09-24 08:38:48	\N
+9	1	customer4@mail.com	$2y$10$paEH6yIOpLm.ObOwZEYbB.BioVT9gbqEBYW5FyuN3.6SoqpsZifFW	2022-09-24 07:56:35	2022-09-24 08:38:48	\N
+8	1	customer3@mail.com	$2y$10$bAn9Y9jIVT.ohmKnAo.q.eRsk3i6G/46sIWrc2lvi5n8q0HF/iIEy	2022-09-24 07:56:32	2022-09-24 08:38:48	\N
+6	1	customer2@mail.com	$2y$10$CCroW1MivtlrRGA2ZT/C2.uC1Ipv4rtqtD/7HCxhEvrw5rsBrRaY6	2022-09-24 07:00:37	2022-09-24 07:00:37	\N
+\.
+
+
+--
+-- Name: failed_jobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: huda
+--
+
+SELECT pg_catalog.setval('public.failed_jobs_id_seq', 1, false);
+
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: huda
+--
+
+SELECT pg_catalog.setval('public.feedbacks_id_seq', 4, true);
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: huda
+--
+
+SELECT pg_catalog.setval('public.messages_id_seq', 8, true);
+
+
+--
+-- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: huda
+--
+
+SELECT pg_catalog.setval('public.migrations_id_seq', 22, true);
+
+
+--
+-- Name: oauth_clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: huda
+--
+
+SELECT pg_catalog.setval('public.oauth_clients_id_seq', 2, true);
+
+
+--
+-- Name: oauth_personal_access_clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: huda
+--
+
+SELECT pg_catalog.setval('public.oauth_personal_access_clients_id_seq', 1, true);
+
+
+--
+-- Name: report_feedbacks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: huda
+--
+
+SELECT pg_catalog.setval('public.report_feedbacks_id_seq', 8, true);
+
+
+--
+-- Name: room_id_seq; Type: SEQUENCE SET; Schema: public; Owner: huda
+--
+
+SELECT pg_catalog.setval('public.room_id_seq', 8, true);
+
+
+--
+-- Name: room_members_id_seq; Type: SEQUENCE SET; Schema: public; Owner: huda
+--
+
+SELECT pg_catalog.setval('public.room_members_id_seq', 16, true);
+
+
+--
+-- Name: user_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: huda
+--
+
+SELECT pg_catalog.setval('public.user_types_id_seq', 2, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: huda
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 10, true);
+
+
+--
+-- Name: failed_jobs failed_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.failed_jobs
+    ADD CONSTRAINT failed_jobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: failed_jobs failed_jobs_uuid_unique; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.failed_jobs
+    ADD CONSTRAINT failed_jobs_uuid_unique UNIQUE (uuid);
+
+
+--
+-- Name: feedbacks feedbacks_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.feedbacks
+    ADD CONSTRAINT feedbacks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: messages messages_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.messages
+    ADD CONSTRAINT messages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.migrations
+    ADD CONSTRAINT migrations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_access_tokens oauth_access_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.oauth_access_tokens
+    ADD CONSTRAINT oauth_access_tokens_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_auth_codes oauth_auth_codes_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.oauth_auth_codes
+    ADD CONSTRAINT oauth_auth_codes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_clients oauth_clients_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.oauth_clients
+    ADD CONSTRAINT oauth_clients_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_personal_access_clients oauth_personal_access_clients_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.oauth_personal_access_clients
+    ADD CONSTRAINT oauth_personal_access_clients_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_refresh_tokens oauth_refresh_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.oauth_refresh_tokens
+    ADD CONSTRAINT oauth_refresh_tokens_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: report_feedbacks report_feedbacks_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.report_feedbacks
+    ADD CONSTRAINT report_feedbacks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: room_members room_members_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.room_members
+    ADD CONSTRAINT room_members_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: room room_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.room
+    ADD CONSTRAINT room_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_types user_types_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.user_types
+    ADD CONSTRAINT user_types_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_email_unique; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_email_unique UNIQUE (email);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: feedbacks_feedback_id_foreign; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX feedbacks_feedback_id_foreign ON public.report_feedbacks USING btree (feedback_id);
+
+
+--
+-- Name: oauth_access_tokens_user_id_index; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX oauth_access_tokens_user_id_index ON public.oauth_access_tokens USING btree (user_id);
+
+
+--
+-- Name: oauth_auth_codes_user_id_index; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX oauth_auth_codes_user_id_index ON public.oauth_auth_codes USING btree (user_id);
+
+
+--
+-- Name: oauth_clients_user_id_index; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX oauth_clients_user_id_index ON public.oauth_clients USING btree (user_id);
+
+
+--
+-- Name: oauth_refresh_tokens_access_token_id_index; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX oauth_refresh_tokens_access_token_id_index ON public.oauth_refresh_tokens USING btree (access_token_id);
+
+
+--
+-- Name: password_resets_email_index; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
+
+
+--
+-- Name: rooms_msg_room_id_foreign; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX rooms_msg_room_id_foreign ON public.messages USING btree (msg_room_id);
+
+
+--
+-- Name: rooms_room_id_foreign; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX rooms_room_id_foreign ON public.room_members USING btree (room_id);
+
+
+--
+-- Name: users_created_by_foreign; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX users_created_by_foreign ON public.feedbacks USING btree (created_by);
+
+
+--
+-- Name: users_reported_by_foreign; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX users_reported_by_foreign ON public.report_feedbacks USING btree (reported_by);
+
+
+--
+-- Name: users_sender_id_foreign; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX users_sender_id_foreign ON public.messages USING btree (sender_id);
+
+
+--
+-- Name: users_user_id_foreign; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX users_user_id_foreign ON public.room_members USING btree (user_id);
+
+
+--
+-- Name: users_user_type_id_foreign; Type: INDEX; Schema: public; Owner: huda
+--
+
+CREATE INDEX users_user_type_id_foreign ON public.users USING btree (user_type_id);
+
+
+--
+-- Name: users users_user_type_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: huda
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_user_type_id_foreign FOREIGN KEY (user_type_id) REFERENCES public.user_types(id) ON DELETE SET NULL;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

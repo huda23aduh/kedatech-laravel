@@ -1,0 +1,1058 @@
+{
+	"info": {
+		"_postman_id": "63baa5f0-5b14-4202-b4d0-f6fb3d801ba2",
+		"name": "keda-tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1280123"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "customer5@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12341234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{staff_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/check",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"check"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "check",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/auth/check",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"check"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 06:37:36 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 06:37:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZGE0M2E3ZmNiNzk3ZGQxN2ZiNjcyZmQ2ZTRhOGVmZDIzMTU5MDBiNjIzMzg2NDQwYzczMTc4YThhYmU1ZTAxODZmZDQ4OTgyZWYwMGMyOWYiLCJpYXQiOjE2NjQwMDA3NTMuMzk2NjA3LCJuYmYiOjE2NjQwMDA3NTMuMzk2NjEzLCJleHAiOjE2OTU1MzY3NTMuMzkyNTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.1zjbRVwkdijeqPbWokSh5TQHh8AH-0zvJtcG4KB_jBXpEEI-reW_v5P1AbcuLs6OjUkwqRLDjeHUmhQxez7eSY5gsMGw9_Z_m7oySQm34nu8GLHhd5HGU1GtHodAc63M1mkRtL6b_G8m3XAqIsNE7P_TQ-8OrGMzUt1F9WIK-taZZlaO8VZIKMUY88hXvAZFmbXVOZcufMronGU5RriJGzKrQjRXlHH0mjgpiw2m7eCW6Ur3MxofgIfTPnUvv668xUO1E6LxPdV05SwmPyNoyOofhQpRfqiHWX0EPCRxiq9ZLxn_jSED9Y_sKhifQeZ3aJ42Z7kg6-9teE-US0QBtehKNqMd7KhlIZjjFOCKK7Old3Qg_o-hWGLtbYlejkHHhxRC8NY406Dk_hceQNOB1-tYda_cPJfxJw2mv8DT9zErryQ1acP8_OkIEoIhhfrqW3vAg9nHjLR3MFMMnoWLvEr_scuXwKUooz6WLHmZDZrVsAliumEwfpE5DkXKPGzCpo-nHEzGcEEBHCpsNcoiL0C7lFd9hBxPNT9cEy2Sfr2-o1bMnyXerZ9DNBoM1zZrDrum2QxXRtUwMJD-b3WG6oStHAhUxzATEwbKASSJQ74utQS7s-2NzWrZob-Hqvxzg7EyBeXM4AmDQju4uKFAtbmkvo1mKu0z35N-Y_-bEQ0\",\n        \"email\": \"customer@gmail.com\"\n    },\n    \"message\": \"Authorized user.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"customer5@mail.com\",\n    \"password\" : \"12341234\",\n    \"c_password\" : \"12341234\",\n    \"user_type_id\" : 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Staff",
+			"item": [
+				{
+					"name": "see all customer data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{staff_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/staffs/see-customers-data?view_type=all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"staffs",
+								"see-customers-data"
+							],
+							"query": [
+								{
+									"key": "view_type",
+									"value": "all"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "see all customer data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/staffs/see-customers-data?view_type=all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"staffs",
+										"see-customers-data"
+									],
+									"query": [
+										{
+											"key": "view_type",
+											"value": "all",
+											"description": "all = soft delete + active\ndeleted = soft delete only\nactive = active only"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 07:50:29 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 07:50:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"customer-data\": [\n            {\n                \"id\": 1,\n                \"user_type_id\": 1,\n                \"email\": \"customer@gmail.com\",\n                \"created_at\": \"2021-04-01T00:00:00.000000Z\",\n                \"updated_at\": null,\n                \"deleted_at\": null\n            },\n            {\n                \"id\": 5,\n                \"user_type_id\": 1,\n                \"email\": \"customer1@mail.com\",\n                \"created_at\": \"2022-09-24T06:57:25.000000Z\",\n                \"updated_at\": \"2022-09-24T06:57:25.000000Z\",\n                \"deleted_at\": null\n            },\n            {\n                \"id\": 6,\n                \"user_type_id\": 1,\n                \"email\": \"customer2@mail.com\",\n                \"created_at\": \"2022-09-24T07:00:37.000000Z\",\n                \"updated_at\": \"2022-09-24T07:00:37.000000Z\",\n                \"deleted_at\": \"2022-09-24T07:00:37.000000Z\"\n            }\n        ]\n    },\n    \"message\": \"data retrieved successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{staff_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerIds\" : [8,9,10]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/staffs/delete-customers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"staffs",
+								"delete-customers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "see all customer data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/staffs/see-customers-data?view_type=all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"staffs",
+										"see-customers-data"
+									],
+									"query": [
+										{
+											"key": "view_type",
+											"value": "all",
+											"description": "all = soft delete + active\ndeleted = soft delete only\nactive = active only"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 07:50:29 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 07:50:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"customer-data\": [\n            {\n                \"id\": 1,\n                \"user_type_id\": 1,\n                \"email\": \"customer@gmail.com\",\n                \"created_at\": \"2021-04-01T00:00:00.000000Z\",\n                \"updated_at\": null,\n                \"deleted_at\": null\n            },\n            {\n                \"id\": 5,\n                \"user_type_id\": 1,\n                \"email\": \"customer1@mail.com\",\n                \"created_at\": \"2022-09-24T06:57:25.000000Z\",\n                \"updated_at\": \"2022-09-24T06:57:25.000000Z\",\n                \"deleted_at\": null\n            },\n            {\n                \"id\": 6,\n                \"user_type_id\": 1,\n                \"email\": \"customer2@mail.com\",\n                \"created_at\": \"2022-09-24T07:00:37.000000Z\",\n                \"updated_at\": \"2022-09-24T07:00:37.000000Z\",\n                \"deleted_at\": \"2022-09-24T07:00:37.000000Z\"\n            }\n        ]\n    },\n    \"message\": \"data retrieved successfully.\"\n}"
+						},
+						{
+							"name": "delete customer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"customerIds\" : [8,9,10]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/staffs/delete-customers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"staffs",
+										"delete-customers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 08:07:46 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 08:07:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": null,\n    \"message\": \"data retrieved successfully.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Feedback",
+			"item": [
+				{
+					"name": "Create Feedback",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{cust_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"feedback 3\",\n    \"details\" : \"detail feedback 3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/feedbacks/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"feedbacks",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Feedback",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\" : \"feedback 3\",\n    \"details\" : \"detail feedback 3\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/feedbacks/create",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"feedbacks",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 16:00:41 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 16:00:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"title\": \"feedback 3\",\n        \"details\": \"detail feedback 3\",\n        \"created_by\": 5,\n        \"updated_at\": \"2022-09-24T16:00:41.000000Z\",\n        \"created_at\": \"2022-09-24T16:00:41.000000Z\",\n        \"id\": 4\n    },\n    \"message\": \"created successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Report Feedback",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{cust_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"feedback_id\" : 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/feedbacks/report",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"feedbacks",
+								"report"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Report Feedback",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"feedback_id\" : 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/feedbacks/report",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"feedbacks",
+										"report"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 16:00:58 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 16:00:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"feedback_id\": 4,\n        \"reported_by\": 5,\n        \"updated_at\": \"2022-09-24T16:00:58.000000Z\",\n        \"created_at\": \"2022-09-24T16:00:58.000000Z\",\n        \"id\": 8\n    },\n    \"message\": \"reported successfully.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Message",
+			"item": [
+				{
+					"name": "Messages",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{staff_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/messages",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"messages"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Messages",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/messages",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"messages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 17:57:32 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 17:57:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 8,\n            \"content\": \"hello customer 3 chat 3\",\n            \"created_at\": \"2022-09-24 17:18:06\",\n            \"updated_at\": \"2022-09-24 17:18:06\",\n            \"deleted_at\": null,\n            \"msg_room_id\": 8,\n            \"sender_id\": 5\n        },\n        {\n            \"id\": 5,\n            \"content\": \"hello customer 2 chat 1\",\n            \"created_at\": \"2022-09-24 17:00:39\",\n            \"updated_at\": \"2022-09-24 17:00:39\",\n            \"deleted_at\": null,\n            \"msg_room_id\": 7,\n            \"sender_id\": 5\n        },\n        {\n            \"id\": 4,\n            \"content\": \"hello staff 1 chat 2\",\n            \"created_at\": \"2022-09-24 16:51:29\",\n            \"updated_at\": \"2022-09-24 16:51:29\",\n            \"deleted_at\": null,\n            \"msg_room_id\": 6,\n            \"sender_id\": 5\n        }\n    ],\n    \"message\": \"chat retrieved successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Send Messages",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{cust_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"receiver_id\" : 8,\n    \"content\" : \"hello customer 3 chat 1\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/messages/send",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"messages",
+								"send"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Send Messages",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"receiver_id\" : 6,\n    \"content\" : \"hello customer 2 chat 1\"\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/messages/send",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"messages",
+										"send"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 17:00:39 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 17:00:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"content\": \"hello customer 2 chat 1\",\n        \"msg_room_id\": 7,\n        \"sender_id\": 5,\n        \"updated_at\": \"2022-09-24T17:00:39.000000Z\",\n        \"created_at\": \"2022-09-24T17:00:39.000000Z\",\n        \"id\": 5\n    },\n    \"message\": \"message sent successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "All Messages",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{staff_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/messages/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"messages",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Messages",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/messages",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"messages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 17:57:32 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Sep 2022 17:57:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.30"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 8,\n            \"content\": \"hello customer 3 chat 3\",\n            \"created_at\": \"2022-09-24 17:18:06\",\n            \"updated_at\": \"2022-09-24 17:18:06\",\n            \"deleted_at\": null,\n            \"msg_room_id\": 8,\n            \"sender_id\": 5\n        },\n        {\n            \"id\": 5,\n            \"content\": \"hello customer 2 chat 1\",\n            \"created_at\": \"2022-09-24 17:00:39\",\n            \"updated_at\": \"2022-09-24 17:00:39\",\n            \"deleted_at\": null,\n            \"msg_room_id\": 7,\n            \"sender_id\": 5\n        },\n        {\n            \"id\": 4,\n            \"content\": \"hello staff 1 chat 2\",\n            \"created_at\": \"2022-09-24 16:51:29\",\n            \"updated_at\": \"2022-09-24 16:51:29\",\n            \"deleted_at\": null,\n            \"msg_room_id\": 6,\n            \"sender_id\": 5\n        }\n    ],\n    \"message\": \"chat retrieved successfully.\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "staff_token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTZjOTllZjY4NWRhMmJmZTJhYzIyMDBlODk3Yzk0MTc2MDZlNTE4YzNiYTQ2N2I3ZDE2ZDY4ZDkzYjU3NTliNzNlNGU4ZDQ3ZWU3YjY2ZTQiLCJpYXQiOjE2NjQwMDg2NTcuMTE2MjU4LCJuYmYiOjE2NjQwMDg2NTcuMTE2MjYzLCJleHAiOjE2OTU1NDQ2NTcuMTEyMTA5LCJzdWIiOiI3Iiwic2NvcGVzIjpbInN0YWZmLXNjb3BlIl19.meZtv16mBOEpLFCMViqr7yNrilt2vb4_XX-U-KxzKlgjIDM6uL_WtoG73IU2xbTw5HvQD4Kh_KGu1QhZid6bPyLiq8fa6IB-gN-Gn3_OMNKhk9ze0P9lwVAdtT2rZNjjMGrOKLRSNqQbkOI30hw_1ndxTJF4tOQFbzuAttFkOyd8lAGhx_ccpEQsLBGAdnuCLCXXJORMOThYdIMJmuwXI9WTtFhXcNDzxjbDmqYtyv7jJuxy00KedPNCZlzcz-MnWT6mIk1_6upE_XOE4k6x-W6UM3Ga_t3bGvAAEkOGIP8h7wOP4qP6gIPNfdJGbh2zQBg9l76FVFcZK95yPxP-ozAbH8ECa6VgQvO5rERz4JSouqXXBghxXLoKoDOB59llaZMIaznDNy8c1kTM7kD631g-OSfr9muXuTQBbC9038sRrWb9aLfczYJUke5NrHGXqOo7MDrm_4hcVqE0FzdDnTBl8E_i9mJArQAjZMIhiuAnJh3sYk37tpd6eU_cCOMghgnY6kNIRCFRIrRK9AtxgpoMK-s1n6ZrkBJEMQr8ongnJXTZJgbNDEcvYM-1dn_Ttp72Dv96is6THwcZVUSceM6fEt4tshxnUSOIBDuegTOxyyGtdMmnTU6kSO2Kg2UNej-0Pb0lk6S57kIjpZknea-pxwcRzgD3FZKF5S7r_yU",
+			"type": "string"
+		},
+		{
+			"key": "cust_token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOGJhNTc4MmRkMTMxNTg5Y2YzMzVlNDJlMjRhYzA5MjRiM2U3M2UwYmUxMWM1MmRkOTc4YWNiMzA5YTRlOThjZDczMDFkODZmYWQ0NzhhNDMiLCJpYXQiOjE2NjQwMDg2NzMuNzU2NTk3LCJuYmYiOjE2NjQwMDg2NzMuNzU2NjAyLCJleHAiOjE2OTU1NDQ2NzMuNzUyOTgsInN1YiI6IjUiLCJzY29wZXMiOlsiY3VzdG9tZXItc2NvcGUiXX0.UlXGJT0lYmDRDGEU603ZNvXi51U0aaLymiDteouiQ_AIqA_K61ea4rt5tLYIhL28i7Wo8La5RpxWJSoBZpLlM1wA_ZvnTt6GWzLV5AnnkXsJY8hl9dalu8SloWJo183Y5nUvn21nXlbTRIxNqntLw3_ivTf-tYr7rR1Azta9lDIGpjt_V1-9VkrUiyB5Chl_D72CGgUGEiCgFC6H9u7ewuOQd0u1vb6lI06DrORfiT92go3f9W2hy_c3wDEp7slLcrPwerNWeQKGAb1JyIT3VPKIptiCLJLXP6jOCXQK_JR76zLFdTV2-3z-Dq1xcqVe6qlhrucijh73oEg14S41jewAeQwfWYNBuH_yCv8Qws3BpBlmWiPKRr-Xxi4xF6nyvlTHBNd4Aqcn6kgM72LQSM0jCuQtrdhzGvcYACKveFTrjQMi073_7lsaV9X1yl-AFeoGu4njGWBhJkJZIHBHd6wLDlhr40_zC7tgbUPMB5gQPiGJaRW0ez416gboNXrWi-yMTQUZbFj6C5RdwsNUIweRDea5poXotlHvMwRkmz3xex9ETeIwodg3PInI3yEcmnutgv-o7OV6JfjjQXBgMzwcYFhREHDrwHrkBoqpr9Exl1qDUmk8etCAoM2s_dajyFcyamIqMs7nwkup3qNYIx5jEFcgJQyKIlj2a31UFU8",
+			"type": "string"
+		}
+	]
+}
